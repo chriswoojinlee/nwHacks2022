@@ -1,15 +1,12 @@
 import React from 'react';
 import Button from '../components/Button';
-import {Container, Wrapper} from '../pages/Page';
+import Page from '../pages/Page';
+import { safe } from '../pages/data';
+
 
 function Main() {
     return(
-        <Container>
-            <Wrapper>
-
-                
-            </Wrapper>
-        </Container>
+        <Page {...safe}/>
     )
 
 }
