@@ -7,8 +7,8 @@ import logo from '../images/THP.png'
 const Container = styled.div`
 
 position: relative;
-width: 1512px;
-height: 982px;
+width: 100%;
+height: 100vh;
 
 background: #A3E6FF;
 `
@@ -51,6 +51,8 @@ const BtnWrap = styled.div`
   padding-left: 600px;
   padding-bottom: 900px;
   `
+
+
 
 
 const SubmitButton = styled.button`

@@ -1,10 +1,11 @@
 import styled from 'styled-components';
+import { TopBar } from "../components/TopBar";
 
 const Container = styled.div`
 
 position: relative;
-width: 1512px;
-height: 982px;
+width: 100%;
+height: 100vh;
 
 background: ${({color}) => (color ? "#10102E" : "#60ADAD")};
 
@@ -78,6 +79,7 @@ const Page = ({imgEnd, img, info, color, alt}) => {
     return(
       <div>
           <Container color={color}>
+          <TopBar />
             <Wrapper>
                 <Row imgEnd={imgEnd}>
 
@@ -96,7 +98,8 @@ const Page = ({imgEnd, img, info, color, alt}) => {
                 </ColumnTwo>
 
                 </Row>
-
+              
+              
             </Wrapper>
         </Container>
       </div>

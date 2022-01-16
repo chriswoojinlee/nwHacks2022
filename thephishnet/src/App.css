@@ -36,3 +36,19 @@
     transform: rotate(360deg);
   }
 }
+
+.topbar {
+  padding: 20px;
+  display: flex;
+  align-items: left;
+  max-width: 600px;
+}
+
+.topbar a {
+  text-decoration: none;
+  padding: 10px;
+}
+
+.topbar a:hover {
+  color: #faf9f9;
+}
