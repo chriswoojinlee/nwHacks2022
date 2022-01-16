@@ -58,17 +58,6 @@ padding 0 15px;
 grid-area: col2;
 `
 
-const BackButton = styled.button`
-width: 300px;
-height: 50px;
-text-aligned: center;
-background-color: #F6F5F5;
-border-radius: 23px;
-font-size: 25px;
-margin-left: 30%;
-margin-right: 70%
-`  
-
 const TextWrapper = styled.div`
   max-width: 540px;
   padding-top: 0;
