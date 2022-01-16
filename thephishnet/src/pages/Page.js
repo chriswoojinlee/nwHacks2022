@@ -6,7 +6,8 @@ position: relative;
 width: 1512px;
 height: 982px;
 
-background: ${({color}) => (color ? '#60ADAD' : '#10102E')};
+background: ${({color}) => (color ? "#10102E" : "#60ADAD")};
+
 `
 
 const Wrapper = styled.div`
@@ -72,11 +73,11 @@ const Text = styled.p`
 `
 
 
-const Page = ({imgEnd, img, info}) => {
+const Page = ({imgEnd, img, info, color}) => {
 
     return(
       <div>
-          <Container>
+          <Container color={color}>
             <Wrapper>
                 <Row imgEnd={imgEnd}>
 
