@@ -24,6 +24,7 @@ justify-content: center;
 const ImgWrap = styled.div`
   max-width: 555px;
   height: 100%;
+  z-index: 90;
   `
 
 
@@ -31,7 +32,7 @@ const Img = styled.img`
   width: 100%;
   margin: 0 0 10px 0;
   padding-right: 0;
-  z-index; 100;
+  z-index: 100;
   `
 
 const Row = styled.div`
