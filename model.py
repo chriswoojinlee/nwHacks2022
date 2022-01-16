@@ -1,5 +1,5 @@
 import arff
-import joblib
+import pickle
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -56,9 +56,9 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 
 # drop features that are hard to detect, pass through features that already have binary values of legit (1) and 
 # phishing (-1), and ordinalize features with legit (1), suspicious (0), and phishing (-1) values
-drop_features = ["SFH", "SSLfinal_State", "URL_of_Anchor",]
+drop_features = ["SFH", "SSLfinal_State", "URL_of_Anchor", "Request_URL"]
 passthrough_features = ["popUpWindow", "age_of_domain", "having_IP_Address"]
-ordinal_features = ["Request_URL", "web_traffic", "URL_Length"]
+ordinal_features = ["web_traffic", "URL_Length"]
 
 ordinal_transformer = make_pipeline(
     SimpleImputer(strategy="median"),
@@ -299,5 +299,7 @@ for score_type in score_types:
     )
 print("idk")
 # save model
-# with open("/phishing_predictor.joblib", "wb") as f:
-#     joblib.dump(pipe, f)
+filename = 'finalized_model.sav'
+pickle.dump(pipe, open(filename, 'wb'))
+
+print("idk")    
