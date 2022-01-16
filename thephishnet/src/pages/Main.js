@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '../components/Button';
 import Page from '../pages/Page';
 import styled from 'styled-components'
-import logo from '../images/output-onlinepngtools.svg'
+import logo from '../images/THP.png'
 
 const Container = styled.div`
 
