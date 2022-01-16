@@ -1,10 +1,11 @@
 import styled from 'styled-components';
+import { TopBar } from "../components/TopBar";
 
 const Container = styled.div`
 
 position: relative;
-width: 1512px;
-height: 982px;
+width: 100%;
+height: 100vh;
 
 background: ${({color}) => (color ? "#10102E" : "#60ADAD")};
 
@@ -57,6 +58,17 @@ padding 0 15px;
 grid-area: col2;
 `
 
+const BackButton = styled.button`
+width: 300px;
+height: 50px;
+text-aligned: center;
+background-color: #F6F5F5;
+border-radius: 23px;
+font-size: 25px;
+margin-left: 30%;
+margin-right: 70%
+`  
+
 const TextWrapper = styled.div`
   max-width: 540px;
   padding-top: 0;
@@ -78,6 +90,7 @@ const Page = ({imgEnd, img, info, color, alt}) => {
     return(
       <div>
           <Container color={color}>
+          <TopBar />
             <Wrapper>
                 <Row imgEnd={imgEnd}>
 
@@ -96,7 +109,8 @@ const Page = ({imgEnd, img, info, color, alt}) => {
                 </ColumnTwo>
 
                 </Row>
-
+              
+              
             </Wrapper>
         </Container>
       </div>
