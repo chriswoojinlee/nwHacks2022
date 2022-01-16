@@ -54,7 +54,7 @@ const BtnWrap = styled.div`
 
 
 const SubmitButton = styled.button`
-width: 300px;
+width: 200px;
 height: 50px;
 text-aligned: center;
 background-color: #F6F5F5;
@@ -82,7 +82,7 @@ function Main() {
                     </ImgWrap>
 
                     <TextWrapper>
-                    <WebsiteInput type="text" placeholder="Input Website Here.....">
+                    <WebsiteInput type="text" placeholder="Input Website Here...">
                     </ WebsiteInput>
                     </TextWrapper>
 
