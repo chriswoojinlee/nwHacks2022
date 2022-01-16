@@ -27,7 +27,7 @@ justify-content: center;
 
 const ImgWrap = styled.div`
   max-width: 555px;
-  height: 50%;
+  height: 40%;
   z-index: 90;
   text-align: center;
   `
@@ -41,7 +41,6 @@ const Img = styled.img`
   `
 
 const TextWrapper = styled.div`
-padding: 6px 10px;
 width: 100px;
 
 `
@@ -49,7 +48,7 @@ width: 100px;
 const BtnWrap = styled.div`
   display: flex;
   justify-content: flex-start;
-  padding-left: 400px;
+  padding-left: 600px;
   padding-bottom: 900px;
   `
 
@@ -60,6 +59,16 @@ height: 50px;
 text-aligned: center;
 background-color: #F6F5F5;
 border-radius: 23px;
+font-size: 25px;
+
+`
+
+const WebsiteInput = styled.input`
+width: 500px;
+height: 50px;
+text-aligned: center;
+background-color: #F6F5F5;
+border: none;
 
 `
 
@@ -71,9 +80,10 @@ function Main() {
                     <ImgWrap>
                     <img src={logo} />
                     </ImgWrap>
+
                     <TextWrapper>
-                    <input type="text" placeholder="Input Website Here.....">
-                    </input>
+                    <WebsiteInput type="text" placeholder="Input Website Here.....">
+                    </ WebsiteInput>
                     </TextWrapper>
 
                     <BtnWrap>

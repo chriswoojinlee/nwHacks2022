@@ -60,7 +60,7 @@ grid-area: col2;
 const TextWrapper = styled.div`
   max-width: 540px;
   padding-top: 0;
-  padding-bottom: 60px;
+  padding-bottom: 20px;
   `
 
 const Text = styled.p`

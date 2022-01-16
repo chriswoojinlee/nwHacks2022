@@ -7,6 +7,7 @@ import { phish} from '../pages/data';
 function Phish() {
     return(
         <div>
+
              <Page {...phish}/>
         </div>
     )
