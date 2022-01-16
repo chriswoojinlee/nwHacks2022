@@ -73,7 +73,7 @@ const Text = styled.p`
 `
 
 
-const Page = ({imgEnd, img, info, color}) => {
+const Page = ({imgEnd, img, info, color, alt}) => {
 
     return(
       <div>
@@ -91,7 +91,7 @@ const Page = ({imgEnd, img, info, color}) => {
 
                 <ColumnTwo>
                 <ImgWrap>
-                <Img src={img} />
+                <Img src={img} alt={alt} />
                 </ImgWrap>
                 </ColumnTwo>
 
