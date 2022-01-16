@@ -6,7 +6,8 @@ position: relative;
 width: 1512px;
 height: 982px;
 
-background: ${({color}) => (color ? '#60ADAD' : '#10102E')};
+background: ${({color}) => (color ? "#10102E" : "#60ADAD")};
+
 `
 
 const Wrapper = styled.div`
@@ -59,7 +60,7 @@ grid-area: col2;
 const TextWrapper = styled.div`
   max-width: 540px;
   padding-top: 0;
-  padding-bottom: 60px;
+  padding-bottom: 20px;
   `
 
 const Text = styled.p`
@@ -72,11 +73,11 @@ const Text = styled.p`
 `
 
 
-const Page = ({imgEnd, img, info}) => {
+const Page = ({imgEnd, img, info, color, alt}) => {
 
     return(
       <div>
-          <Container>
+          <Container color={color}>
             <Wrapper>
                 <Row imgEnd={imgEnd}>
 
@@ -90,7 +91,7 @@ const Page = ({imgEnd, img, info}) => {
 
                 <ColumnTwo>
                 <ImgWrap>
-                <Img src={img} />
+                <Img src={img} alt={alt} />
                 </ImgWrap>
                 </ColumnTwo>
 
