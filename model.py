@@ -1,4 +1,5 @@
 import arff
+import joblib
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -60,7 +61,7 @@ passthrough_features = ["popUpWindow", "age_of_domain", "having_IP_Address"]
 ordinal_features = ["Request_URL", "web_traffic", "URL_Length"]
 
 ordinal_transformer = make_pipeline(
-    SimpleImputer(strategy="constant"),
+    SimpleImputer(strategy="median"),
     OrdinalEncoder(handle_unknown="use_encoded_value", unknown_value=-1)
 )
 
@@ -146,6 +147,8 @@ grid_results_df = grid_results_df.sort_values(by="mean_test_score", ascending=Fa
 pipe = make_pipeline(preprocessor, LogisticRegression(C=0.01, class_weight="balanced", max_iter=1000, 
     solver='lbfgs', multi_class='multinomial'))
 
+pipe.fit(X_train, y_train)
+
 for score_type in score_types:
     if(score_type == "f1"):
         scorer = make_scorer(f1_score, average='macro')
@@ -180,4 +183,121 @@ for score_type in score_types:
             )
     )
 
+# third try through with other models
+pipe_lgbm = make_pipeline(preprocessor, LGBMClassifier(random_state=123))
+pipe_catboost = make_pipeline(preprocessor, CatBoostClassifier(verbose=0, random_state=123))
 
+pipe_lgbm.fit(X_train, y_train)
+pipe_catboost.fit(X_train, y_train)
+
+for score_type in score_types:
+    if(score_type == "f1"):
+        scorer = make_scorer(f1_score, average='macro')
+
+        print(
+            "%-9s: %.2f"
+            % (score_type, cross_val_score(pipe_lgbm, X_train, y_train, scoring=scorer).mean())
+        )
+
+    elif(score_type == "precision"):
+        scorer = make_scorer(precision_score, average='macro')
+
+        print(
+            "%-9s: %.2f"
+            % (score_type, cross_val_score(pipe_lgbm, X_train, y_train, scoring=scorer).mean())
+        )
+
+    elif(score_type == "recall"):
+        scorer = make_scorer(recall_score, average='macro')
+
+        print(
+            "%-9s: %.2f"
+            % (score_type, cross_val_score(pipe_lgbm, X_train, y_train, scoring=scorer).mean())
+        )
+
+    elif(score_type == "accuracy"):
+        print(
+            "%-9s: %.2f"
+            % (
+                score_type,
+                cross_val_score(pipe_lgbm, X_train, y_train, scoring=score_type).mean(),
+            )
+    )
+
+for score_type in score_types:
+    if(score_type == "f1"):
+        scorer = make_scorer(f1_score, average='macro')
+
+        print(
+            "%-9s: %.2f"
+            % (score_type, cross_val_score(pipe_catboost, X_train, y_train, scoring=scorer).mean())
+        )
+
+    elif(score_type == "precision"):
+        scorer = make_scorer(precision_score, average='macro')
+
+        print(
+            "%-9s: %.2f"
+            % (score_type, cross_val_score(pipe_catboost, X_train, y_train, scoring=scorer).mean())
+        )
+
+    elif(score_type == "recall"):
+        scorer = make_scorer(recall_score, average='macro')
+
+        print(
+            "%-9s: %.2f"
+            % (score_type, cross_val_score(pipe_catboost, X_train, y_train, scoring=scorer).mean())
+        )
+
+    elif(score_type == "accuracy"):
+        print(
+            "%-9s: %.2f"
+            % (
+                score_type,
+                cross_val_score(pipe_catboost, X_train, y_train, scoring=score_type).mean(),
+            )
+    )
+
+# use best performing model, logistic regression, to predict on test data
+pipe = make_pipeline(preprocessor, LogisticRegression(C=0.01, class_weight="balanced", max_iter=1000, 
+    solver='lbfgs', multi_class='multinomial'))
+
+pipe.fit(X_train, y_train)
+
+for score_type in score_types:
+    if(score_type == "f1"):
+        scorer = make_scorer(f1_score, average='macro')
+
+        print(
+            "%-9s: %.2f"
+            % (score_type, cross_val_score(pipe, X_test, y_test, scoring=scorer).mean())
+        )
+
+    elif(score_type == "precision"):
+        scorer = make_scorer(precision_score, average='macro')
+
+        print(
+            "%-9s: %.2f"
+            % (score_type, cross_val_score(pipe, X_test, y_test, scoring=scorer).mean())
+        )
+
+    elif(score_type == "recall"):
+        scorer = make_scorer(recall_score, average='macro')
+
+        print(
+            "%-9s: %.2f"
+            % (score_type, cross_val_score(pipe, X_test, y_test, scoring=scorer).mean())
+        )
+
+    elif(score_type == "accuracy"):
+        print(
+            "%-9s: %.2f"
+            % (
+                score_type,
+                cross_val_score(pipe, X_test, y_test, scoring=score_type).mean(),
+            )
+    )
+print("idk")
+# save model
+# with open("/phishing_predictor.joblib", "wb") as f:
+#     joblib.dump(pipe, f)
